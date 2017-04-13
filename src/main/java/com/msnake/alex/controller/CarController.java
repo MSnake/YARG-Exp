@@ -1,7 +1,7 @@
 package com.msnake.alex.controller;
 
 import com.msnake.alex.model.Car;
-import com.msnake.alex.repository.CarRepository;
+import com.msnake.alex.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,13 +24,13 @@ import java.util.List;
 public class CarController {
 
     @Autowired
-    private CarRepository carRepository;
+    private CarService carService;
 
 
     @GetMapping
     public ResponseEntity getCars() {
         try {
-            List<Car> cars = (List<Car>) carRepository.findAll();
+            List<Car> cars = carService.get();
             return new ResponseEntity(cars, HttpStatus.OK);
         } catch (Exception ex) {
             return new ResponseEntity(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

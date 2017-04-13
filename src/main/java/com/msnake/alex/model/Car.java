@@ -1,7 +1,6 @@
 package com.msnake.alex.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -14,8 +13,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "car")
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
 public class Car {
 
     @Id
